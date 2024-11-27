@@ -8,8 +8,8 @@
 </head>
 <body>
     <div class="header">
-        <h1>Personalized System Status Dashboard</h1>
-        <p>Your live environment status at a glance</p>
+        <h1>Mesh Network Dashboard</h1>
+        <p>Live environment, at a glance</p>
     </div>
 
     <div class="status-box">
@@ -34,9 +34,154 @@
     </div>
 
     <div id="mesh-3d"></div>
-
     <script src="three.min.js"></script>
     <script src="web3.min.js"></script>
     <script src="script.js"></script> <!-- External JS link -->
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+        }
+        .header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .status-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .status-box div {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 22%;
+            text-align: center;
+        }
+        h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Personalized System Status Dashboard</h1>
+        <p>Your live environment status at a glance</p>
+    </div>
+
+    <div class="status-box">
+        <!-- Date, Time, Unix Epoch -->
+        <div>
+            <h3>Time Info</h3>
+            <p id="current-time">Loading...</p>
+            <p id="epoch-time">Loading...</p>
+        </div>
+
+        <!-- IP Address -->
+        <div>
+            <h3>IP Info</h3>
+            <p id="ip-address">Loading...</p>
+        </div>
+
+        <!-- Transfer Speeds -->
+        <div>
+            <h3>Transfer Speeds</h3>
+            <p id="download-speed">Loading...</p>
+            <p id="upload-speed">Loading...</p>
+        </div>
+
+        <!-- Air Quality -->
+        <div>
+            <h3>Air Quality</h3>
+            <p id="air-quality">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Additional Information Sections -->
+    <div class="status-box">
+        <!-- Nearby Connections -->
+        <div>
+            <h3>Nearby Connections</h3>
+            <p id="network-info">Loading...</p>
+        </div>
+
+        <!-- Traffic Data -->
+        <div>
+            <h3>Traffic Counts</h3>
+            <p id="traffic-data">Loading...</p>
+        </div>
+
+        <!-- Neighborhood Resources -->
+        <div>
+            <h3>Neighborhood Resources</h3>
+            <p id="resources-info">Loading...</p>
+        </div>
+
+        <!-- Job Listings -->
+        <div>
+            <h3>Job/Gig Listings</h3>
+            <p id="job-listings">Loading...</p>
+        </div>
+        <!-- Mesh 3d -->
+        <div id="mesh-3d">
+        </div>
+    </div>
+
+    <script>
+        // Function to update date, time, and epoch timestamp
+        function updateDateTime() {
+            let date = new Date();
+            document.getElementById("current-time").innerText = date.toLocaleTimeString();
+            document.getElementById("epoch-time").innerText = date.getTime();
+        }
+        
+        // Example function to fetch and display IP address
+        async function fetchIP() {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            document.getElementById("ip-address").innerText = data.ip;
+        }
+        
+        // Example function to fetch transfer speeds (using a free API or mock)
+        function fetchTransferSpeeds() {
+            document.getElementById("download-speed").innerText = "50 Mbps (Mocked)";
+            document.getElementById("upload-speed").innerText = "25 Mbps (Mocked)";
+        }
+
+        // Example function to fetch air quality data (using a public API)
+        async function fetchAirQuality() {
+            const response = await fetch('https://api.openweathermap.org/data/2.5/air_pollution?lat=35&lon=139&appid=YOUR_API_KEY');
+            const data = await response.json();
+            document.getElementById("air-quality").innerText = `AQI: ${data.list[0].main.aqi}`;
+        }
+
+        // Call functions to populate the dashboard
+        updateDateTime();
+        fetchIP();
+        fetchTransferSpeeds();
+        fetchAirQuality();
+        setInterval(updateDateTime, 1000); // Update time every second
+    </script>
+    <script src="three.min.js"></script>
+    <script src="web3.min.js"></script>
+    <script src="script.js"></script> <!-- External JS link -->
+</body>
+</html>
+
