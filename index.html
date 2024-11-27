@@ -5,6 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesh Network Dashboard</title>
     <link rel="stylesheet" href="style.css"> <!-- External CSS link -->
+    <js name="geolocation">
+    function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+}
+</js>
+<js name="webrtc">
+// Setup WebRTC connection
+const peerConnection = new RTCPeerConnection();
+
+// Create an offer to initiate connection
+function createOffer() {
+    peerConnection.createOffer()
+        .then(offer => peerConnection.setLocalDescription(offer))
+        .then(() => {
+            // Send the offer to the remote peer (using WebSocket or similar)
+            sendOfferToPeer(peerConnection.localDescription);
+        });
+}
+
+// Handle incoming offer and send back an answer
+function handleOffer(offer) {
+    peerConnection.setRemoteDescription(new RTCSessionDescription(offer))
+        .then(() => peerConnection.createAnswer())
+        .then(answer => peerConnection.setLocalDescription(answer))
+        .then(() => sendAnswerToPeer(peerConnection.localDescription));
+}
+
+// Handle ICE candidates for connection establishment
+peerConnection.onicecandidate = function(event) {
+    if (event.candidate) {
+        sendIceCandidateToPeer(event.candidate);
+    }
+};
+
+// Handle data channel (for messaging, file transfers, etc.)
+const dataChannel = peerConnection.createDataChannel("mesh-data");
+dataChannel.onopen = () => console.log("Data channel opened!");
+
+</js>
+<js name="websocket">
+const socket = new WebSocket('ws://your-websocket-server.com');
+
+socket.onopen = function(event) {
+    console.log("Connected to WebSocket server.");
+};
+
+socket.onmessage = function(event) {
+    const message = JSON.parse(event.data);
+    if (message.type === 'offer') {
+        handleOffer(message.offer);
+    } else if (message.type === 'answer') {
+        handleAnswer(message.answer);
+    } else if (message.type === 'candidate') {
+        handleIceCandidate(message.candidate);
+    }
+};
+
+function sendOfferToPeer(offer) {
+    socket.send(JSON.stringify({ type: 'offer', offer: offer }));
+}
+
+function sendAnswerToPeer(answer) {
+    socket.send(JSON.stringify({ type: 'answer', answer: answer }));
+}
+
+function sendIceCandidate(candidate) {
+    socket.send(JSON.stringify({ type: 'candidate', candidate: candidate }));
+}
+
+</js>
+<js name"nerby conection">
+navigator.bluetooth.requestDevice({
+    acceptAllDevices: true,
+    optionalServices: ['battery_service']
+})
+.then(device => {
+    console.log('Connected to device', device.name);
+})
+.catch(error => {
+    console.log('Error: ', error);
+});
+
+<js/>
 </head>
 <body>
     <div class="header">
