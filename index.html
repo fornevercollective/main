@@ -23,9 +23,36 @@
           <div><a  id="download-speed">:::</div>
           <div><a  id="upload-speed">:::</div>
           <div><a  id="air-quality">:::</div>
+          <div><a  id="current-time">:::</div>
+          <div><a  id="epoch-time">:::</div>
+          <div><a  id="ip-address">:::</div>
+          <div><a  id="download-speed">:::</div>
+          <div><a  id="upload-speed">:::</div>
+          <div><a  id="air-quality">:::</div>
 
-            time local question <script>  to Locale Time String </script>
-            reference other code js java script 
+        <!-- Date, Time, Unix Epoch -->
+          <div><a  id="current-time">:::</div>
+          <div><a  id="epoch-time">:::</div>
+        <!-- IP Address -->
+          <div><a  id="ip-address">:::</div>
+        <!-- Transfer Speeds -->
+          <div><a  id="download-speed">:::</div>
+          <div><a  id="upload-speed">:::</div>
+        <!-- Air Quality -->
+          <div><a  id="air-quality">:::</div>
+
+
+    <!-- Additional Information Sections -->
+
+        <!-- Nearby Connections -->
+          <div><a  id="network-info">:::</div>
+        <!-- Traffic Data -->
+          <div><a  id="traffic-data">:::</div>
+        <!-- Neighborhood Resources -->
+          <div><a  id="resources-info">:::</div>
+        <!-- Job Listings -->
+          <div><a  id="job-listings">:::</div>
+
               
       </section>
     </header>
@@ -2626,6 +2653,9 @@ def test {
         </div>
       </div>
 
+      ~ ///// load chat gpt in this section or whatver you want ///// ~ 
+    
+
       <div id="editor-generated"></div>
       <div id="editor-generated-label">Output</div>
       <div id="editor-generated-buttons">
@@ -2643,32 +2673,9 @@ def test {
   </body>
 </html>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-68409374-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
-<script src="skew/ace.min.js"></script>
-<script src="skew/script2.js"></script>
-
-
-
-
-
--------------/////////////////////////
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesh Network Dashboard</title>
-    <link rel="stylesheet" href="skew/style2.css"> <!-- External CSS link -->
-    <js name="geolocation">
+<js>
+  <!-- location for time -->
+<js name="geolocation">
     function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -2681,6 +2688,9 @@ function showPosition(position) {
     console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
 }
 </js>
+  <!-- location for time -->
+
+  <!-- ip info -->
 <js name="webrtc">
 // Setup WebRTC connection
 const peerConnection = new RTCPeerConnection();
@@ -2715,6 +2725,8 @@ const dataChannel = peerConnection.createDataChannel("mesh-data");
 dataChannel.onopen = () => console.log("Data channel opened!");
 
 </js>
+  <!-- ip info -->
+  
 <js name="websocket">
 const socket = new WebSocket('ws://your-websocket-server.com');
 
@@ -2746,6 +2758,9 @@ function sendIceCandidate(candidate) {
 }
 
 </js>
+  <!-- ip info -->
+  
+  <!-- bluetooth-->
 <js name"nerby conection">
 navigator.bluetooth.requestDevice({
     acceptAllDevices: true,
@@ -2759,95 +2774,9 @@ navigator.bluetooth.requestDevice({
 });
 
 <js/>
-</head>
-<body>
-    <div class="header">
-        <h1>Mesh Network Dashboard</h1>
-        <p>Live environment, at a glance</p>
-    </div>
-
-    <div class="status-box">
-        <div>
-            <h3>Time Info</h3>
-            <p id="current-time">Loading...</p>
-            <p id="epoch-time">Loading...</p>
-        </div>
-        <div>
-            <h3>IP Info</h3>
-            <p id="ip-address">Loading...</p>
-        </div>
-        <div>
-            <h3>Transfer Speeds</h3>
-            <p id="download-speed">Loading...</p>
-            <p id="upload-speed">Loading...</p>
-        </div>
-        <div>
-            <h3>Air Quality</h3>
-            <p id="air-quality">Loading...</p>
-        </div>
-    </div>
-
-    <div class="header">
-        <h1>Personalized System Status Dashboard</h1>
-        <p>Your live environment status at a glance</p>
-    </div>
-
-    <div class="status-box">
-        <!-- Date, Time, Unix Epoch -->
-        <div>
-            <h3>Time Info</h3>
-            <p id="current-time">Loading...</p>
-            <p id="epoch-time">Loading...</p>
-        </div>
-
-        <!-- IP Address -->
-        <div>
-            <h3>IP Info</h3>
-            <p id="ip-address">Loading...</p>
-        </div>
-
-        <!-- Transfer Speeds -->
-        <div>
-            <h3>Transfer Speeds</h3>
-            <p id="download-speed">Loading...</p>
-            <p id="upload-speed">Loading...</p>
-        </div>
-
-        <!-- Air Quality -->
-        <div>
-            <h3>Air Quality</h3>
-            <p id="air-quality">Loading...</p>
-        </div>
-    </div>
-
-    <!-- Additional Information Sections -->
-    <div class="status-box">
-        <!-- Nearby Connections -->
-        <div>
-            <h3>Nearby Connections</h3>
-            <p id="network-info">Loading...</p>
-        </div>
-
-        <!-- Traffic Data -->
-        <div>
-            <h3>Traffic Counts</h3>
-            <p id="traffic-data">Loading...</p>
-        </div>
-
-        <!-- Neighborhood Resources -->
-        <div>
-            <h3>Neighborhood Resources</h3>
-            <p id="resources-info">Loading...</p>
-        </div>
-
-        <!-- Job Listings -->
-        <div>
-            <h3>Job/Gig Listings</h3>
-            <p id="job-listings">Loading...</p>
-        </div>
-    </div>
-
-    <script>
+    <!-- bluetooth-->
+</js>
+<script>
         // Function to update date, time, and epoch timestamp
         function updateDateTime() {
             let date = new Date();
@@ -2881,10 +2810,12 @@ navigator.bluetooth.requestDevice({
         fetchTransferSpeeds();
         fetchAirQuality();
         setInterval(updateDateTime, 1000); // Update time every second
-    </script>
-    <script src="script.js"></script> <!-- External JS link -->
+</script>
+
+<script src="skew/ace.min.js"></script>
+<script src="skew/script2.js"></script>
+<script src="script.js"></script> <!-- External JS link -->
+
 </body>
 </html>
 
-
----------------////////////////////////////
