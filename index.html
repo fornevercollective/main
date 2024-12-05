@@ -14,6 +14,19 @@
         <div><a id="nav-getting-started" href="#start">Getting Started</a></div>
         <div><a id="nav-docs" href="#docs">Docs</a></div>
         <div><a id="nav-github" href="https://github.com/evanw/skew">GitHub</a></div>
+        <div><a id="nav-blank">|</a></div>
+        <div><a id="nav-current_time">:::</a></div>
+        <div><a id="nav-epoch_time">:::</a></div>
+         <div><a  id="current-time">:::</div>
+          <div><a  id="epoch-time">:::</div>
+          <div><a  id="ip-address">:::/div>
+          <div><a  id="download-speed">:::</div>
+          <div><a  id="upload-speed">:::</div>
+          <div><a  id="air-quality">:::</div>
+
+            time local question <script>  to Locale Time String </script>
+            reference other code js java script 
+              
       </section>
     </header>
 
@@ -2838,28 +2851,28 @@ navigator.bluetooth.requestDevice({
         // Function to update date, time, and epoch timestamp
         function updateDateTime() {
             let date = new Date();
-            document.getElementById("current-time").innerText = date.toLocaleTimeString();
-            document.getElementById("epoch-time").innerText = date.getTime();
+            document.getElementById("nav-current_time").innerText = date.toLocaleTimeString();
+            document.getElementById("nav-epoch_time").innerText = date.getTime();
         }
 
         // Example function to fetch and display IP address
         async function fetchIP() {
             const response = await fetch('https://api.ipify.org?format=json');
             const data = await response.json();
-            document.getElementById("ip-address").innerText = data.ip;
+            document.getElementById("nav-ip_address").innerText = data.ip;
         }
 
         // Example function to fetch transfer speeds (using a free API or mock)
         function fetchTransferSpeeds() {
-            document.getElementById("download-speed").innerText = "50 Mbps (Mocked)";
-            document.getElementById("upload-speed").innerText = "25 Mbps (Mocked)";
+            document.getElementById("nav-download_speed").innerText = "50 Mbps (Mocked)";
+            document.getElementById("nav-upload_speed").innerText = "25 Mbps (Mocked)";
         }
 
         // Example function to fetch air quality data (using a public API)
         async function fetchAirQuality() {
             const response = await fetch('https://api.openweathermap.org/data/2.5/air_pollution?lat=35&lon=139&appid=YOUR_API_KEY');
             const data = await response.json();
-            document.getElementById("air-quality").innerText = `AQI: ${data.list[0].main.aqi}`;
+            document.getElementById("nav_air-quality").innerText = `AQI: ${data.list[0].main.aqi}`;
         }
 
         // Call functions to populate the dashboard
